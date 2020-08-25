@@ -61,3 +61,16 @@ auth:
     max_login_attempts: 3
     token_expire_after: 30 #in minutes
 ```
+
+## Events
+
+Events to dispatch manually (see _**demo**_ folder):
+
+-   `Damian972\AuthBundle\Event\AccountConfirmedEvent`
+-   `Damian972\AuthBundle\Event\BadCredentialsEvent`
+-   `Damian972\AuthBundle\Event\RegisteredUserEvent`
+
+Automatically dispatched:
+
+-   `Damian972\AuthBundle\Event\PasswordRecoveredEvent`
+-   `Damian972\AuthBundle\Event\PasswordResetRequestEvent`
