@@ -1,0 +1,41 @@
+{
+	"name": "damian972/auth-bundle",
+	"description": "Simple auth bundle",
+	"keywords": [
+		"symfony",
+		"symfony 5",
+		"symfony-bundle",
+		"auth"
+	],
+	"type": "symfony-bundle",
+	"license": "Apache-2.0",
+	"homepage": "https://github.com/Damian972/auth-bundle",
+	"authors": [
+		{
+			"name": "Damian972",
+			"homepage": "https://github.com/Damian972"
+		}
+	],
+	"require": {
+		"php": ">=7.2.5",
+		"sensio/framework-extra-bundle": "^5.1",
+		"symfony/form": "^5.1",
+		"symfony/framework-bundle": "^5.1",
+		"symfony/http-client": "^5.1",
+		"symfony/orm-pack": "*",
+		"symfony/security-bundle": "^5.1",
+		"symfony/validator": "^5.1",
+		"symfony/yaml": "^5.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"Damian972\\AuthBundle\\": "src/"
+		}
+	},
+	"extra": {
+		"symfony": {
+			"allow-contrib": false,
+			"require": "^5.1"
+		}
+	}
+}

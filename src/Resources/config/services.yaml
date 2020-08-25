@@ -1,0 +1,53 @@
+services:
+    auth.service.login_attempt:
+        public: true
+        class: Damian972\AuthBundle\Service\LoginAttempt
+        arguments:
+            [
+                '@doctrine.orm.entity_manager',
+                '@auth.login_attempt_repository',
+                '%auth.max_login_attempts%',
+                '%auth.token_expire_after%',
+            ]
+
+    Damian972\AuthBundle\Service\LoginAttempt: '@auth.service.login_attempt'
+
+    auth.service.password_reset:
+        public: true
+        class: Damian972\AuthBundle\Service\PasswordReset
+        arguments:
+            [
+                '@doctrine.orm.entity_manager',
+                '@auth.password_reset_token_repository',
+                '@security.user_password_encoder.generic',
+                '@event_dispatcher',
+                '%auth.token_expire_after%',
+            ]
+
+    Damian972\AuthBundle\Service\PasswordReset: '@auth.service.password_reset'
+
+    # SUBSCRIBERS
+    auth.subscriber:
+        class: Damian972\AuthBundle\Subscriber\AuthSubscriber
+        arguments: ['@auth.service.login_attempt']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    # REPOSITORIES
+    auth.login_attempt_repository:
+        public: true
+        class: Damian972\AuthBundle\Repository\AttemptRepository
+        autowire: true
+        tags:
+            - { name: doctrine.repository_service }
+
+    Damian972\AuthBundle\Repository\AttemptRepository: '@auth.login_attempt_repository'
+
+    auth.password_reset_token_repository:
+        public: true
+        class: Damian972\AuthBundle\Repository\TokenRepository
+        autowire: true
+        tags:
+            - { name: doctrine.repository_service }
+
+    Damian972\AuthBundle\Repository\TokenRepository: '@auth.password_reset_token_repository'
