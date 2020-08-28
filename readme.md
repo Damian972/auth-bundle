@@ -18,6 +18,28 @@ Look at **`demo`** folder for examples.
 
 **Note**: still in beta so [load from the repository](https://getcomposer.org/doc/05-repositories.md#loading-a-package-from-a-vcs-repository)
 
+Add this config below in your `composer.json`
+
+```json
+{
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/Damian972/auth-bundle"
+		}
+	],
+	"require-dev": {
+		"damian972/auth-bundle": "dev-master"
+	}
+}
+```
+
+then run:
+
+```shell
+composer update
+```
+
 **2** Register the bundle in `config/bundles.php`
 
 ```php
